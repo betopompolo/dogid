@@ -1,7 +1,9 @@
 package com.example.dogid
 
+import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.example.dogid.data.AuthUser
 import com.example.dogid.ui.LoginViewModel
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.RelaxedMockK
@@ -15,15 +17,18 @@ class LoginViewModelTest {
     @get:Rule
     val instantTaskRule = InstantTaskExecutorRule()
 
-    lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: LoginViewModel
 
     @RelaxedMockK
     lateinit var mockObserver: Observer<Boolean>
 
+    @RelaxedMockK
+    lateinit var mockApp: Application
+
     @Before
     fun beforeTests() {
         MockKAnnotations.init(this)
-        viewModel = LoginViewModel()
+        viewModel = LoginViewModel(mockApp)
     }
 
     @After
@@ -35,10 +40,10 @@ class LoginViewModelTest {
     fun testLoginFormValidation() {
         viewModel.isLoginFormValid.observeForever(mockObserver)
 
-        viewModel.userEmail = "test@"
-        viewModel.userEmail = "test@gmail.com"
-        viewModel.userEmail = "test.com"
-        viewModel.userEmail = "test@gmail.com.br"
+        viewModel.authUser = AuthUser("test@")
+        viewModel.authUser = AuthUser("test@gmail.com")
+        viewModel.authUser = AuthUser("test.com")
+        viewModel.authUser = AuthUser("test@gmail.com.br")
 
         verifyOrder {
             mockObserver.onChanged(false)

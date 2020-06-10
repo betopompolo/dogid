@@ -1,5 +1,7 @@
 <resources>
     <string name="appName">Dog Id</string>
     <string name="loginButton">Entrar</string>
+    <string name="loginButtonProgress">Entrando…</string>
     <string name="loginEditTextEmailHint">Digite seu e-mail</string>
+    <string name="defaultErrorMessage">Ops! Algo deu errado</string>
 </resources>
