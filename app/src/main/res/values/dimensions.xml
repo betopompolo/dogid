@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="defaultScreenPadding">16dp</dimen>
+    <dimen name="spacingMedium">12dp</dimen>
+    <dimen name="spacingLarge">24dp</dimen>
+    <dimen name="spacingXLarge">32dp</dimen>
+</resources>
