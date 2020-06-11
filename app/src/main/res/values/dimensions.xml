@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="defaultScreenPadding">16dp</dimen>
+    <dimen name="spacingXSmall">2dp</dimen>
+    <dimen name="spacingSmall">8dp</dimen>
     <dimen name="spacingMedium">12dp</dimen>
     <dimen name="spacingLarge">24dp</dimen>
     <dimen name="spacingXLarge">32dp</dimen>
+    <dimen name="dogGalleryItemHeight">120dp</dimen>
+    <dimen name="dogBreedsItemRadius">86dp</dimen>
 </resources>
