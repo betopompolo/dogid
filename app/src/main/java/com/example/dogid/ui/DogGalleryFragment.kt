@@ -4,18 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout.HORIZONTAL
-import android.widget.GridLayout.VERTICAL
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.dogid.R
 import com.example.dogid.data.Dog
 import com.example.dogid.data.DogBreed
 import kotlinx.android.synthetic.main.dog_gallery_fragment.*
-import kotlinx.android.synthetic.main.dog_gallery_item.view.*
 
 class DogGalleryFragment : Fragment() {
 
@@ -87,7 +80,7 @@ class DogGalleryFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         dogGalleryView.apply {
-            adapter = DogGalleryAdapter(mockedDogs, context)
+            adapter = DogGalleryAdapter(mockedDogs)
         }
     }
 }

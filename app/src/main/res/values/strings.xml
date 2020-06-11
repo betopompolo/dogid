@@ -4,4 +4,5 @@
     <string name="loginButtonProgress">Entrando…</string>
     <string name="loginEditTextEmailHint">Digite seu e-mail</string>
     <string name="defaultErrorMessage">Ops! Algo deu errado</string>
+    <string name="dogGalleryItemImageDescription">Imagem de um cachorro</string>
 </resources>

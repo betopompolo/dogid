@@ -1,32 +1,33 @@
 package com.example.dogid.ui
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy.AUTOMATIC
 import com.example.dogid.R
 import com.example.dogid.data.Dog
 import kotlinx.android.synthetic.main.dog_gallery_item.view.*
 
-class DogGalleryAdapter(private val dogs: List<Dog>, private val context: Context) : RecyclerView.Adapter<DogGalleryAdapter.ViewHolder>() {
+class DogGalleryAdapter(private val dogs: List<Dog>) : RecyclerView.Adapter<DogGalleryAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val image = itemView.dogGalleryItemImage
 
-        fun bind(dog: Dog, position: Int) {
-            if (position % 2 == 0) {
-                image.setBackgroundColor(context.resources.getColor(R .color.colorAccent))
-            } else {
-                image.setBackgroundColor(context.resources.getColor(R.color.black))
-            }
+        fun bind(dog: Dog) {
+            Glide.with(itemView)
+                .load(dog.imageUrl)
+                .placeholder(R.drawable.ic_dog_placeholder)
+                .diskCacheStrategy(AUTOMATIC)
+                .into(image)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.dog_gallery_item, parent, false)
 
-        return ViewHolder(itemView, context)
+        return ViewHolder(itemView)
     }
 
     override fun getItemCount() = dogs.size
@@ -34,6 +35,6 @@ class DogGalleryAdapter(private val dogs: List<Dog>, private val context: Contex
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dog = dogs[position]
 
-        holder.bind(dog, position)
+        holder.bind(dog)
     }
 }

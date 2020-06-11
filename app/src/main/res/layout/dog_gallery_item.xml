@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dogGalleryItemHeight"
         android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/dogGalleryItemImageDescription"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>
