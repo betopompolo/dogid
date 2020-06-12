@@ -14,3 +14,15 @@ data class SignUpUserResponse (
 data class SignUpResponseBody (
     val user: SignUpUserResponse
 )
+
+enum class FeedCategoryOption {
+    husky,
+    hound,
+    pug,
+    labrador
+}
+
+data class FeedResponseBody(
+    val category: String,
+    val list: List<String>
+)

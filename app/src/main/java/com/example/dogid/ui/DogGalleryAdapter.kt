@@ -10,7 +10,7 @@ import com.example.dogid.R
 import com.example.dogid.data.Dog
 import kotlinx.android.synthetic.main.dog_gallery_item.view.*
 
-class DogGalleryAdapter(private val dogs: List<Dog>) : RecyclerView.Adapter<DogGalleryAdapter.ViewHolder>() {
+class DogGalleryAdapter(var dogs: List<Dog>) : RecyclerView.Adapter<DogGalleryAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val image = itemView.dogGalleryItemImage
@@ -36,5 +36,10 @@ class DogGalleryAdapter(private val dogs: List<Dog>) : RecyclerView.Adapter<DogG
         val dog = dogs[position]
 
         holder.bind(dog)
+    }
+
+    fun setData(newDogs: List<Dog>) {
+        dogs = newDogs
+        notifyDataSetChanged()
     }
 }

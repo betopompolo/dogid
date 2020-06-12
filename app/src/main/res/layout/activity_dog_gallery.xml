@@ -16,7 +16,27 @@
         android:layout_marginVertical="@dimen/spacingMedium"
         android:layout_marginHorizontal="@dimen/spacingSmall"
     />
+    <LinearLayout
+        android:id="@+id/loadingIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:gravity="center"
+        android:orientation="vertical"
+    >
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacingSmall"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dogGalleryLoading"
+        />
+    </LinearLayout>
+
     <androidx.fragment.app.FragmentContainerView
+        android:visibility="gone"
         android:id="@+id/dogGalleryFragment"
         android:name="com.example.dogid.ui.DogGalleryFragment"
         android:layout_width="match_parent"

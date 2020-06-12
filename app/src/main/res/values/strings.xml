@@ -5,4 +5,5 @@
     <string name="loginEditTextEmailHint">Digite seu e-mail</string>
     <string name="defaultErrorMessage">Ops! Algo deu errado</string>
     <string name="dogGalleryItemImageDescription">Imagem de um cachorro</string>
+    <string name="dogGalleryLoading">Carregando...</string>
 </resources>

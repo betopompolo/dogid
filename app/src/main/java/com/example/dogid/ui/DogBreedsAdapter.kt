@@ -8,12 +8,16 @@ import com.example.dogid.R
 import com.example.dogid.data.DogBreed
 import kotlinx.android.synthetic.main.dog_breeds_item.view.*
 
-class DogBreedsAdapter(private val dogBreeds: List<DogBreed>) : RecyclerView.Adapter<DogBreedsAdapter.ViewHolder>() {
+class DogBreedsAdapter(private val onItemClick: (selectedDogBreed: DogBreed) -> Unit) : RecyclerView.Adapter<DogBreedsAdapter.ViewHolder>() {
+    private val dogBreeds: List<DogBreed> = DogBreed.values().toList()
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textItem = itemView.dogBreedTextItem
 
-        fun bind(dogBreed: DogBreed, isSelected: Boolean) {
+        fun bind(dogBreed: DogBreed) {
+            itemView.setOnClickListener {
+                onItemClick(dogBreed)
+            }
             textItem.text = dogBreed.name.capitalize()
         }
     }
@@ -29,6 +33,6 @@ class DogBreedsAdapter(private val dogBreeds: List<DogBreed>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dogBreed = dogBreeds[position]
 
-        holder.bind(dogBreed, false)
+        holder.bind(dogBreed)
     }
 }
