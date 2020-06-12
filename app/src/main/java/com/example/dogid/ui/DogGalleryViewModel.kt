@@ -27,7 +27,9 @@ class DogGalleryViewModel(application: Application) : AndroidViewModel(applicati
 
     fun setSelectedDogBreed(dogBreed: DogBreed) {
         _selectedDogBreed.postValue(dogBreed)
-        _dogs.postValue(emptyList())
+        if (_dogs.value?.isEmpty() == false) {
+            _dogs.postValue(emptyList())
+        }
 
         userRepository.getLoggedUser(getApplication())?.let { loggedUser ->
             dogRepository.listByBreed(dogBreed, object : RepositoryCallback<List<Dog>> {

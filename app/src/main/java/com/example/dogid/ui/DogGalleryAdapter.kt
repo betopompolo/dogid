@@ -18,7 +18,7 @@ class DogGalleryAdapter(var dogs: List<Dog>) : RecyclerView.Adapter<DogGalleryAd
         fun bind(dog: Dog) {
             Glide.with(itemView)
                 .load(dog.imageUrl)
-                .placeholder(R.drawable.ic_dog_placeholder)
+                .placeholder(R.drawable.ic_app)
                 .diskCacheStrategy(AUTOMATIC)
                 .into(image)
         }
