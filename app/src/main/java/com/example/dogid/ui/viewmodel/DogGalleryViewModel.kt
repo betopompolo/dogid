@@ -33,6 +33,10 @@ class DogGalleryViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     fun setSelectedDogBreed(dogBreed: DogBreed) {
+        if (dogBreed == selectedDogBreed.value) {
+            return
+        }
+
         _selectedDogBreed.postValue(dogBreed)
         if (_dogs.value?.isEmpty() == false) {
             _dogs.postValue(emptyList())

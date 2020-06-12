@@ -7,6 +7,7 @@
     app:cardCornerRadius="@dimen/dogBreedsItemRadius"
     app:cardBackgroundColor="@color/grey"
     android:layout_marginRight="@dimen/spacingSmall"
+    android:layout_marginEnd="@dimen/spacingSmall"
 >
     <TextView
         android:id="@+id/dogBreedTextItem"
