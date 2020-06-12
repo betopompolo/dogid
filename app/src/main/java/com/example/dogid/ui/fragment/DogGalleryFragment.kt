@@ -31,6 +31,7 @@ class DogGalleryFragment : Fragment() {
 
         viewModel.dogs.observe(viewLifecycleOwner, Observer { dogs ->
             val adapter: DogGalleryAdapter = dogGalleryView.adapter as DogGalleryAdapter
+            dogGalleryView.layoutManager?.scrollToPosition(0)
             adapter.setData(dogs)
         })
     }
