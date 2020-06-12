@@ -1,4 +1,4 @@
-package com.example.dogid.data
+package com.example.dogid.data.datasource
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -20,5 +20,6 @@ class IdDogClient {
         .baseUrl(baseUrl)
         .build()
 
-    val requests: IdDogEndpoints = retrofit.create(IdDogEndpoints::class.java)
+    val requests: IdDogEndpoints = retrofit.create(
+        IdDogEndpoints::class.java)
 }

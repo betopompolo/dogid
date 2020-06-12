@@ -14,17 +14,17 @@
         android:theme="@style/AppTheme"
     >
         <activity
-            android:name=".ui.DogDetailActivity"
-            android:parentActivityName=".ui.DogGalleryActivity"
+            android:name=".ui.activity.DogDetailActivity"
+            android:parentActivityName=".ui.activity.DogGalleryActivity"
             android:screenOrientation="sensorPortrait"
         />
 
         <activity
-            android:name=".ui.DogGalleryActivity"
+            android:name=".ui.activity.DogGalleryActivity"
             android:screenOrientation="sensorPortrait"
         />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="sensorPortrait"
         >

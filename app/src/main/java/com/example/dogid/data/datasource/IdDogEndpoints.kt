@@ -1,4 +1,4 @@
-package com.example.dogid.data
+package com.example.dogid.data.datasource
 
 import retrofit2.Call
 import retrofit2.http.*

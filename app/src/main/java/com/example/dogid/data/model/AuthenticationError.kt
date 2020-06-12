@@ -1,3 +1,3 @@
-package com.example.dogid.data
+package com.example.dogid.data.model
 
 class AuthenticationError : Error("Usuário não autenticado")

@@ -1,13 +1,13 @@
-package com.example.dogid.ui
+package com.example.dogid.ui.viewmodel
 
 import android.app.Application
-import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.dogid.R
-import com.example.dogid.data.*
+import com.example.dogid.data.model.AuthUser
+import com.example.dogid.data.model.User
+import com.example.dogid.data.repository.RepositoryCallback
+import com.example.dogid.data.repository.UserRepository
+import com.example.dogid.ui.util.emailValidator
 
 
 class LoginViewModel(app: Application) : AndroidViewModel(app), LifecycleObserver {
@@ -29,16 +29,25 @@ class LoginViewModel(app: Application) : AndroidViewModel(app), LifecycleObserve
         get() = _loginError
     private val _loginError = MutableLiveData<Error>()
 
-    private val userRepository = UserRepository()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+    private val _isLoading = MutableLiveData(false)
+
+    private val userRepository =
+        UserRepository()
 
     fun login() {
-        userRepository.login(authUser, object : RepositoryCallback<User> {
+        _isLoading.postValue(true)
+        userRepository.login(authUser, object :
+            RepositoryCallback<User> {
             override fun onSuccess(data: User) {
+                _isLoading.postValue(false)
                 userRepository.saveLoggedUser(data, getApplication())
                 _loggedUser.postValue(data)
             }
 
             override fun onError(error: Error?) {
+                _isLoading.postValue(false)
                 val errorMsg = getApplication<Application>().getString(R.string.defaultErrorMessage)
                 _loginError.postValue(Error(errorMsg))
             }
@@ -56,7 +65,8 @@ class LoginViewModel(app: Application) : AndroidViewModel(app), LifecycleObserve
     }
 
     private fun validateForm() {
-        val isUserEmailValid = emailValidator(authUser.email)
+        val isUserEmailValid =
+            emailValidator(authUser.email)
         _isLoginFormValid.postValue(isUserEmailValid)
     }
 }

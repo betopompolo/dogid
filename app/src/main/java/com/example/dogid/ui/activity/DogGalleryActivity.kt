@@ -1,4 +1,4 @@
-package com.example.dogid.ui
+package com.example.dogid.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.dogid.R
-import com.example.dogid.data.Dog
+import com.example.dogid.data.model.Dog
+import com.example.dogid.ui.viewmodel.DogGalleryViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_dog_gallery.*
 

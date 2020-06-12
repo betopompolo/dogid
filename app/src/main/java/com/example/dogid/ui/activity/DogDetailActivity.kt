@@ -1,11 +1,11 @@
-package com.example.dogid.ui
+package com.example.dogid.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.dogid.R
-import com.example.dogid.data.Dog
+import com.example.dogid.data.model.Dog
 import kotlinx.android.synthetic.main.activity_dog_detail.*
 
 const val dogKey = "dogKey"

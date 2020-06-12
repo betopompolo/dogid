@@ -1,4 +1,4 @@
-package com.example.dogid.data
+package com.example.dogid.data.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

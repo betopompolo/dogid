@@ -1,8 +1,13 @@
-package com.example.dogid.data
+package com.example.dogid.data.repository
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import com.example.dogid.R
+import com.example.dogid.data.datasource.IdDogClient
+import com.example.dogid.data.datasource.SignUpResponseBody
+import com.example.dogid.data.mapper.UserMapper
+import com.example.dogid.data.model.AuthUser
+import com.example.dogid.data.model.User
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback

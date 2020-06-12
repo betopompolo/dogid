@@ -1,4 +1,4 @@
-package com.example.dogid.ui
+package com.example.dogid.ui.util
 
 import androidx.core.util.PatternsCompat
 

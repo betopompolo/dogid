@@ -1,4 +1,4 @@
-package com.example.dogid.ui
+package com.example.dogid.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy.AUTOMATIC
 import com.example.dogid.R
-import com.example.dogid.data.Dog
+import com.example.dogid.data.model.Dog
 import kotlinx.android.synthetic.main.dog_gallery_item.view.*
 
 typealias ImageClickListener = (dog: Dog) -> Unit

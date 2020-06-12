@@ -3,8 +3,8 @@ package com.example.dogid
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.dogid.data.AuthUser
-import com.example.dogid.ui.LoginViewModel
+import com.example.dogid.data.model.AuthUser
+import com.example.dogid.ui.viewmodel.LoginViewModel
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.verifyOrder
@@ -41,9 +41,11 @@ class LoginViewModelTest {
         viewModel.isLoginFormValid.observeForever(mockObserver)
 
         viewModel.authUser = AuthUser("test@")
-        viewModel.authUser = AuthUser("test@gmail.com")
+        viewModel.authUser =
+            AuthUser("test@gmail.com")
         viewModel.authUser = AuthUser("test.com")
-        viewModel.authUser = AuthUser("test@gmail.com.br")
+        viewModel.authUser =
+            AuthUser("test@gmail.com.br")
 
         verifyOrder {
             mockObserver.onChanged(false)

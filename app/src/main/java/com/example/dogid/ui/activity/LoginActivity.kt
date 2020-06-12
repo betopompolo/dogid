@@ -1,14 +1,16 @@
-package com.example.dogid.ui
+package com.example.dogid.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import com.example.dogid.R
-import com.example.dogid.data.AuthUser
+import com.example.dogid.data.model.AuthUser
+import com.example.dogid.ui.viewmodel.LoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -22,12 +24,21 @@ class LoginActivity : AppCompatActivity() {
         val contentView: View = findViewById(android.R.id.content)
 
         loginButton.setOnClickListener {
-            setLoading(true)
             viewModel.login()
         }
 
+        userEmailEditText.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                viewModel.login()
+                true
+            } else {
+                false
+            }
+        }
         userEmailEditText.doAfterTextChanged { userEmail ->
-            viewModel.authUser = AuthUser(userEmail?.toString() ?: "")
+            viewModel.authUser = AuthUser(
+                userEmail?.toString() ?: ""
+            )
         }
 
         viewModel.isLoginFormValid.observe(this, Observer { isValid ->
@@ -35,13 +46,15 @@ class LoginActivity : AppCompatActivity() {
         })
 
         viewModel.loggedUser.observe(this, Observer {
-            setLoading(false)
             openDogGallery()
         })
 
         viewModel.loginError.observe(this, Observer {
-            setLoading(false)
             Snackbar.make(contentView, it.message ?: getString(R.string.defaultErrorMessage), Snackbar.LENGTH_SHORT).show()
+        })
+
+        viewModel.isLoading.observe(this, Observer { isLoading ->
+            setLoading(isLoading)
         })
 
         lifecycle.addObserver(viewModel)

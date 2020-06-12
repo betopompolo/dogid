@@ -1,12 +1,18 @@
-package com.example.dogid.ui
+package com.example.dogid.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.dogid.data.*
+import com.example.dogid.data.model.Dog
+import com.example.dogid.data.model.DogBreed
+import com.example.dogid.data.repository.DogRepository
+import com.example.dogid.data.repository.RepositoryCallback
+import com.example.dogid.data.repository.UserRepository
+import com.example.dogid.ui.adapter.ImageClickListener
 
 class DogGalleryViewModel(application: Application) : AndroidViewModel(application), LifecycleObserver {
-    private val dogRepository =  DogRepository()
-    private val userRepository = UserRepository()
+    private val dogRepository = DogRepository()
+    private val userRepository =
+        UserRepository()
     var onImageClickListener: ImageClickListener? = null
 
     val dogs: LiveData<List<Dog>>
@@ -33,7 +39,8 @@ class DogGalleryViewModel(application: Application) : AndroidViewModel(applicati
         }
 
         userRepository.getLoggedUser(getApplication())?.let { loggedUser ->
-            dogRepository.listByBreed(dogBreed, object : RepositoryCallback<List<Dog>> {
+            dogRepository.listByBreed(dogBreed, object :
+                RepositoryCallback<List<Dog>> {
                 override fun onSuccess(data: List<Dog>) {
                     _dogs.postValue(data)
                 }

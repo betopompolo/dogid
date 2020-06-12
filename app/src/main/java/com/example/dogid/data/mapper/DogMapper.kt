@@ -1,4 +1,9 @@
-package com.example.dogid.data
+package com.example.dogid.data.mapper
+
+import com.example.dogid.data.datasource.FeedCategoryOption
+import com.example.dogid.data.datasource.FeedResponseBody
+import com.example.dogid.data.model.Dog
+import com.example.dogid.data.model.DogBreed
 
 class DogMapper {
     private val feedCategoryMap: Map<DogBreed, FeedCategoryOption> = mapOf(
@@ -15,6 +20,11 @@ class DogMapper {
     fun mapFeedResponse(feedResponseBody: FeedResponseBody): List<Dog> {
         val dogBreed: DogBreed = feedCategoryMap.filterValues { it.name == feedResponseBody.category }.keys.first()
 
-        return feedResponseBody.list.map { Dog(it, dogBreed) }
+        return feedResponseBody.list.map {
+            Dog(
+                it,
+                dogBreed
+            )
+        }
     }
 }

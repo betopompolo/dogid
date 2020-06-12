@@ -1,11 +1,11 @@
-package com.example.dogid.ui
+package com.example.dogid.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dogid.R
-import com.example.dogid.data.DogBreed
+import com.example.dogid.data.model.DogBreed
 import kotlinx.android.synthetic.main.dog_breeds_item.view.*
 
 class DogBreedsAdapter(private val onItemClick: (selectedDogBreed: DogBreed) -> Unit) : RecyclerView.Adapter<DogBreedsAdapter.ViewHolder>() {
