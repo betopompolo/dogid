@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.example.dogid.R
 import kotlinx.android.synthetic.main.dog_gallery_fragment.*
 
+
 class DogGalleryFragment : Fragment() {
 
     private val viewModel: DogGalleryViewModel by activityViewModels()
@@ -23,7 +24,7 @@ class DogGalleryFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        dogGalleryView.adapter = DogGalleryAdapter(viewModel.dogs.value ?: emptyList())
+        dogGalleryView.adapter = DogGalleryAdapter(viewModel.onImageClickListener)
 
         viewModel.dogs.observe(viewLifecycleOwner, Observer { dogs ->
             val adapter: DogGalleryAdapter = dogGalleryView.adapter as DogGalleryAdapter

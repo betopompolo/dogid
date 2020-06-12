@@ -1,5 +1,8 @@
 package com.example.dogid.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 enum class DogBreed {
     Husky,
     Hound,
@@ -7,7 +10,8 @@ enum class DogBreed {
     Labrador,
 }
 
+@Parcelize
 data class Dog(
     val imageUrl: String,
     val breed: DogBreed
-)
+) : Parcelable

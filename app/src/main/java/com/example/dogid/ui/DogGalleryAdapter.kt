@@ -10,12 +10,18 @@ import com.example.dogid.R
 import com.example.dogid.data.Dog
 import kotlinx.android.synthetic.main.dog_gallery_item.view.*
 
-class DogGalleryAdapter(var dogs: List<Dog>) : RecyclerView.Adapter<DogGalleryAdapter.ViewHolder>() {
+typealias ImageClickListener = (dog: Dog) -> Unit
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class DogGalleryAdapter(val onImageClick: ImageClickListener?) : RecyclerView.Adapter<DogGalleryAdapter.ViewHolder>() {
+    private var dogs: List<Dog> = emptyList()
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val image = itemView.dogGalleryItemImage
 
         fun bind(dog: Dog) {
+            image.setOnClickListener {
+                onImageClick?.let { callback -> callback(dog) }
+            }
             Glide.with(itemView)
                 .load(dog.imageUrl)
                 .placeholder(R.drawable.ic_app)

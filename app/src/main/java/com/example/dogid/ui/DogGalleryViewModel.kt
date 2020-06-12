@@ -7,6 +7,7 @@ import com.example.dogid.data.*
 class DogGalleryViewModel(application: Application) : AndroidViewModel(application), LifecycleObserver {
     private val dogRepository =  DogRepository()
     private val userRepository = UserRepository()
+    var onImageClickListener: ImageClickListener? = null
 
     val dogs: LiveData<List<Dog>>
         get() = _dogs

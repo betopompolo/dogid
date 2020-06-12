@@ -1,5 +1,6 @@
 package com.example.dogid.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
@@ -8,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.dogid.R
+import com.example.dogid.data.Dog
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_dog_gallery.*
 
@@ -33,6 +35,10 @@ class DogGalleryActivity : AppCompatActivity() {
             val errorMessage = error?.message ?: getText(R.string.defaultErrorMessage)
             Snackbar.make(contentView, errorMessage, Snackbar.LENGTH_SHORT).show()
         })
+
+        viewModel.onImageClickListener = { selectedDog ->
+            openDogDetailActivity(selectedDog)
+        }
     }
 
     private fun setLoading(showLoading: Boolean) {
@@ -43,5 +49,11 @@ class DogGalleryActivity : AppCompatActivity() {
             loadingIndicator.visibility = GONE
             dogGalleryFragment.visibility = VISIBLE
         }
+    }
+
+    private fun openDogDetailActivity(dog: Dog) {
+        val intent = Intent(this, DogDetailActivity::class.java)
+        intent.putExtra(dogKey, dog)
+        startActivity(intent)
     }
 }
